@@ -3,12 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./Routers/useRouter');
+const serveStatic = require('serve-static');
 const vacancyRouter = require('./Routers/vacancyRouter');
 const resumeRouter = require('./Routers/resumeRouter');
 const ErrorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const serveStatic = require('serve-static');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
