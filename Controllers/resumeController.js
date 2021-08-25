@@ -1,4 +1,3 @@
-const ApiError = require('../middleware/apiError');
 const ResumeService = require('../Services/resumeService');
 
 class ResumeController {

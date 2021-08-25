@@ -1,12 +1,10 @@
 require('dotenv').config();
-const path = require('path');
-
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const userRouter = require('./Routers/useRouter');
 const vacancyRouter = require('./Routers/vacancyRouter');
 const resumeRouter = require('./Routers/resumeRouter');
-const ErrorHandler = require('./middleware/ErrorHandler');
+const ErrorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const serveStatic = require('serve-static');

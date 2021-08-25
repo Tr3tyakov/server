@@ -1,4 +1,3 @@
-const ApiError = require('../middleware/apiError');
 const VacancyService = require('../Services/vacancyService');
 
 class VacancyController {
