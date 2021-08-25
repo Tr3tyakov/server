@@ -8,8 +8,9 @@ const ErrorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const serveStatic = require('serve-static');
+const express = require('express');
 const app = express();
-PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.static('static'));
