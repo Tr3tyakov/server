@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.static('static'));
-app.use(serveStatic(__dirname + '/dist'));
+app.use(serveStatic(__dirname + '/site'));
 
 app.use(
   fileUpload({
