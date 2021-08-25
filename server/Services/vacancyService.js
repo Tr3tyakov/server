@@ -1,6 +1,6 @@
-const favoriteModel = require(path.join(__dirname, '../models/favoriteModel'));
-const vacancyModel = require(path.join(__dirname, '../models/vacancyModel'));
-const tokenService = require(path.join(__dirname, './tokenService'));
+const favoriteModel = require('../models/favoriteModel');
+const vacancyModel = require('../models/vacancyModel');
+const tokenService = require('./tokenService');
 
 class VacancyService {
   async createVacancy(refreshToken, newVacancy) {
@@ -50,7 +50,7 @@ class VacancyService {
         $limit: 6,
       },
     ]);
-
+    console.log(vacancyData);
     if (refreshToken) {
       const tokenData = await tokenService.checkRefreshToken(refreshToken);
       const favorite = await favoriteModel.findOne({ user: tokenData.user.id });

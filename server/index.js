@@ -20,7 +20,7 @@ app.use(
     createParentPath: true,
   }),
 );
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://next-tailwind-project.herokuapp.com', credentials: true }));
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);

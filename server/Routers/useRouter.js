@@ -1,8 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const path = require('path');
-
-const userController = require(path.join(__dirname, '../Controllers/userController'));
+const userController = require('../Controllers/userController');
 const { check } = require('express-validator');
 router.post(
   '/registration',

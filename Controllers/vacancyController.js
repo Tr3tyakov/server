@@ -1,7 +1,5 @@
-const path = require('path');
-
-const ApiError = require(path.join(__dirname, '../middleware/apiError'));
-const VacancyService = require(path.join(__dirname, '../Services/vacancyService'));
+const ApiError = require('../middleware/apiError');
+const VacancyService = require('../Services/vacancyService');
 
 class VacancyController {
   async createVacancy(req, res, next) {

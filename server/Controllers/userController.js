@@ -1,8 +1,6 @@
-const path = require('path');
-const UserService = require(path.join(__dirname, '../Services/userService'));
+const UserService = require('../Services/userService');
 const { validationResult } = require('express-validator');
-const ApiError = require(path.join(__dirname, '../middleware/apiError'));
-
+const ApiError = require('../middleware/apiError');
 class UserController {
   async registration(req, res, next) {
     try {

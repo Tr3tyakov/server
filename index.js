@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -8,7 +9,6 @@ const resumeRouter = require('./Routers/resumeRouter');
 const ErrorHandler = require('./middleware/ErrorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-const path = require('path');
 const serveStatic = require('serve-static');
 const app = express();
 PORT = process.env.PORT || 5000;

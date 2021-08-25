@@ -1,6 +1,5 @@
-const path = require('path');
-const resumeModel = require(path.join(__dirname, '../models/resumeModel'));
-const tokenService = require(path.join(__dirname, './tokenService'));
+const resumeModel = require('../models/resumeModel');
+const tokenService = require('./tokenService');
 
 class ResumeService {
   async createResume(refreshToken, newVacancy, mainInfo) {

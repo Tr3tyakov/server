@@ -1,6 +1,5 @@
 const Router = require('express');
-const path = require('path');
-const vacancyController = require(path.join(__dirname, '../Controllers/vacancyController'));
+const vacancyController = require('../Controllers/vacancyController');
 const router = new Router();
 
 router.post('/vacancy', vacancyController.createVacancy);

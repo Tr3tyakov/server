@@ -1,6 +1,5 @@
-const path = require('path');
-const ApiError = require(path.join(__dirname, '../middleware/apiError'));
-const ResumeService = require(path.join(__dirname, '../Services/resumeService'));
+const ApiError = require('../middleware/apiError');
+const ResumeService = require('../Services/resumeService');
 
 class ResumeController {
   async createResume(req, res, next) {

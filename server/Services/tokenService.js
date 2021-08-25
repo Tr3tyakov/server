@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
-const path = require('path');
-
-const ApiError = require(path.join(__dirname, '../middleware/apiError'));
-const TokenModel = require(path.join(__dirname, '../models/tokenModel'));
+const ApiError = require('../middleware/apiError');
+const TokenModel = require('../models/tokenModel');
 
 class TokenService {
   async createTokens(user) {
