@@ -1,12 +1,12 @@
-const userModel = require(path.join(__dirname, '../models/userModel'));
+const userModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
-const userDto = require(path.join(__dirname, '../DTO/userDto'));
-const TokenService = require(path.join(__dirname, './tokenService'));
-const ApiError = require(path.join(__dirname, '../middleware/apiError'));
-const fileService = require(path.join(__dirname, './fileService'));
-const transportMailer = require(path.join(__dirname, '../nodemailer/confirmEmail'));
+const userDto = require('../DTO/userDto');
+const TokenService = require('./tokenService');
+const ApiError = require('../middleware/apiError');
+const fileService = require('./fileService');
+const transportMailer = require('../nodemailer/confirmEmail');
 const uuid = require('uuid');
-const passwordMailer = require(path.join(__dirname, '../nodemailer/forgotPassword'));
+const passwordMailer = require('../nodemailer/forgotPassword');
 
 class UserService {
   async registration(email, password) {
