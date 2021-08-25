@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const URL = 'http://localhost:5000/api';
+export const URL = 'https://next-tailwind-project.herokuapp.com/api';
 
 export const api = axios.create({
   withCredentials: true,
