@@ -1,5 +1,5 @@
-const resumeModel = require('../models/resumeModel'));
-const tokenService = require('./tokenService'));
+const resumeModel = require('../models/resumeModel');
+const tokenService = require('./tokenService');
 
 class ResumeService {
   async createResume(refreshToken, newVacancy, mainInfo) {
