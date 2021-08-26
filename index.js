@@ -28,26 +28,8 @@ app.use(
     'Access-Control-Allow-Origin': '*',
   }),
 );
-app.all('*', function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://tailwind-project3.herokuapp.com');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
 app.set('trust proxy', 1); // optional, not needed for secure cookies
-app.use(
-  session({
-    name: 'random_session',
-    secret: 'yryGGeugidx34otGDuSF5sD9R8g0Gü3r8',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      path: '/',
-      secure: true,
-      httpOnly: true,
-    },
-  }),
-);
+
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
