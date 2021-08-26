@@ -25,10 +25,9 @@ app.use(
   cors({
     origin: 'https://tailwindproject.vercel.app',
     credentials: true,
-    'Access-Control-Allow-Origin': '*',
   }),
 );
-app.set('trust proxy'); // optional, not needed for secure cookies
+app.set('trust proxy', 1); // optional, not needed for secure cookies
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
