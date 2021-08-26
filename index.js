@@ -14,6 +14,22 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.static('static'));
+app.use(
+  session({
+    name: 'random_session',
+    secret: 'random_secret',
+    resave: false,
+    saveUnitialized: true,
+    cookie: {
+      path: '/',
+      secure: true,
+      // domain: '.vercel.app',
+      httpOnly: true,
+      sameSite: 'none',
+      maxAge: 30 * 24 * 60 * 1000,
+    },
+  }),
+);
 
 app.use(
   fileUpload({
@@ -26,21 +42,6 @@ app.use(
   cors({
     origin: 'https://tailwindproject.vercel.app',
     credentials: true,
-  }),
-);
-app.use(
-  session({
-    name: 'random_session',
-    secret: 'random_secret',
-    resave: false,
-    saveUnitialized: true,
-    cookie: {
-      path: '/',
-      secure: true,
-      // domain: '.vercel.app',
-      httpOnly: true,
-      maxAge: 30 * 24 * 60 * 1000,
-    },
   }),
 );
 app.use(cookieParser('random_secret'));
