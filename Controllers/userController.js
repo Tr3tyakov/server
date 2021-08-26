@@ -26,11 +26,7 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        secure: true,
-        sameSite: 'Lax',
-        resave: true,
-        saveUninitialized: true,
-        proxy: true,
+        sameSite: 'none',
       });
       res.json(userData);
     } catch (e) {
@@ -55,11 +51,7 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        secure: true,
-        sameSite: 'Lax',
-        resave: true,
-        saveUninitialized: true,
-        proxy: true,
+        sameSite: 'none',
       });
       res.json(userData);
     } catch (e) {
