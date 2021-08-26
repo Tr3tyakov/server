@@ -28,7 +28,22 @@ app.use(
     credentials: true,
   }),
 );
-app.use(cookieParser());
+app.use(
+  session({
+    name: 'random_session',
+    secret: 'random_secret',
+    resave: false,
+    saveUnitialized: true,
+    cookie: {
+      path: '/',
+      secure: true,
+      domain: '.vercel.app',
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 1000,
+    },
+  }),
+);
+app.use(cookieParser('random_secret'));
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
 app.use('/api', vacancyRouter);
