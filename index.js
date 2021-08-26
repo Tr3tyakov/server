@@ -20,7 +20,7 @@ app.use(
     createParentPath: true,
   }),
 );
-app.use(cors({ origin: 'https://tailwind-project3.herokuapp.com', credentials: true }));
+app.use(cors({ origin: 'tailwind-project3.herokuapp.com', credentials: true }));
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
