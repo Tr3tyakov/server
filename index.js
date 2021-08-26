@@ -28,7 +28,7 @@ app.use(
     'Access-Control-Allow-Origin': '*',
   }),
 );
-app.enable('trust proxy'); // optional, not needed for secure cookies
+app.set('trust proxy'); // optional, not needed for secure cookies
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);

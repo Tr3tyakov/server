@@ -25,6 +25,4 @@ const Vacancy = new Schema({
 });
 
 Vacancy.index({ 'info.title': 'text' });
-Vacancy.index({ 'info.startSalary': 'salary' });
-Vacancy.index({ 'info.city': 'city' });
 module.exports = model('Vacancy', Vacancy);
