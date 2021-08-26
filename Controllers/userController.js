@@ -25,10 +25,7 @@ class UserController {
 
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
-        secure: true,
         path: '/',
-        sameSite: 'none',
-
         // domain: 'vercel.app',
         httpOnly: true,
       });
@@ -54,10 +51,9 @@ class UserController {
       const userData = await UserService.refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
-        secure: true,
         path: '/',
         // domain: 'vercel.app',
-        sameSite: 'none',
+
         httpOnly: true,
       });
       res.json(userData);
