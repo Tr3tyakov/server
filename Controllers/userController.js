@@ -26,8 +26,13 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-
+        secret: 'street',
+        resave: true,
+        saveUninitialized: true,
+        proxy: true,
+        sameSite: 'none',
         secure: true,
+        path: '/',
       });
       res.json(userData);
     } catch (e) {
@@ -52,7 +57,13 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
+        secret: 'street',
+        resave: true,
+        saveUninitialized: true,
+        proxy: true,
+        sameSite: 'none',
         secure: true,
+        path: '/',
       });
       res.json(userData);
     } catch (e) {
