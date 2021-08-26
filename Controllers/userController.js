@@ -27,7 +27,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 1000,
         path: '/',
         secure: true,
-        domain: '.vercel.app',
+        // domain: '.vercel.app',
         sameSite: 'none',
         httpOnly: true,
       });
@@ -55,7 +55,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 1000,
         path: '/',
         secure: true,
-        domain: '.vercel.app',
+        // domain: '.vercel.app',
         sameSite: 'none',
         httpOnly: true,
       });
