@@ -28,7 +28,7 @@ class UserController {
         httpOnly: true,
         domain: 'vercel.app',
         sameSite: 'none',
-        secure: true,
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
       });
       res.json(userData);
     } catch (e) {
@@ -55,7 +55,7 @@ class UserController {
         httpOnly: true,
         domain: 'vercel.app',
         sameSite: 'none',
-        secure: true,
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
       });
       res.json(userData);
     } catch (e) {

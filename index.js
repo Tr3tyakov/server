@@ -21,13 +21,13 @@ app.use(
   }),
 );
 
-app.use(
+app.enable('trust proxy'); // optional, not needed for secure cookies
+app.enableCors(
   cors({
     origin: 'https://tailwindproject.vercel.app',
     credentials: true,
   }),
 );
-app.set('trust proxy', 1); // optional, not needed for secure cookies
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
