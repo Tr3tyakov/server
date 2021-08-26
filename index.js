@@ -21,7 +21,13 @@ app.use(
   }),
 );
 
-app.use(cors({ origin: 'https://tailwind-project3.herokuapp.com', credentials: true }));
+app.use(
+  cors({
+    origin: 'https://tailwind-project3.herokuapp.com',
+    credentials: true,
+    'Access-Control-Allow-Origin': '*',
+  }),
+);
 app.all('*', function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'https://tailwind-project3.herokuapp.com');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
