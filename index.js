@@ -21,19 +21,14 @@ app.use(
   }),
 );
 
-// app.set('trust proxy', 1); // optional, not needed for secure cookies
-app.enable('trust proxy'); // optional, not needed for secure cookies
 app.use(
-  express.session({
-    secret: 'somesecret',
-    key: 'sid',
-    proxy: true, // add this when behind a reverse proxy, if you need secure cookies
-    cookie: {
-      secure: true,
-      maxAge: 5184000000, // 2 months
-    },
+  cors({
+    origin: 'https://tailwind-project3.herokuapp.com',
+    credentials: true,
+    'Access-Control-Allow-Origin': '*',
   }),
 );
+app.set('trust proxy', 1);
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
