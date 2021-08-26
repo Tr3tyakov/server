@@ -28,6 +28,7 @@ class UserController {
         path: '/',
         secure: true,
         domain: '.vercel.app',
+        sameSite: 'none',
         httpOnly: true,
       });
       res.json(userData);
@@ -55,6 +56,7 @@ class UserController {
         path: '/',
         secure: true,
         domain: '.vercel.app',
+        sameSite: 'none',
         httpOnly: true,
       });
       res.json(userData);
