@@ -34,21 +34,6 @@ app.all('*', function (req, res, next) {
 
 app.set('trust proxy', 1);
 
-app.use(
-  session({
-    name: 'random_session',
-    secret: 'yryGGeugidx34otGDuSF5sD9R8g0Gü3r8',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      path: '/',
-      secure: true,
-      // domain: '.vercel.app',
-      httpOnly: true,
-    },
-  }),
-);
-
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
 app.use('/api', vacancyRouter);

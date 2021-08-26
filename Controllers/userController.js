@@ -23,7 +23,13 @@ class UserController {
       const { email, password } = req.body;
       const userData = await UserService.login(email, password);
 
-      res.cookie('refreshToken', userData.refreshToken);
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 1000,
+        path: '/',
+        secure: true,
+        // domain: '.vercel.app',
+        httpOnly: true,
+      });
       res.json(userData);
     } catch (e) {
       next(e);
@@ -44,7 +50,13 @@ class UserController {
     try {
       const { refreshToken } = req.cookies;
       const userData = await UserService.refresh(refreshToken);
-      res.cookie('refreshToken', userData.refreshToken);
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 1000,
+        path: '/',
+        secure: true,
+        // domain: '.vercel.app',
+        httpOnly: true,
+      });
       res.json(userData);
     } catch (e) {
       next(e);
