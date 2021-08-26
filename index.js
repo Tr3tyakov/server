@@ -12,7 +12,6 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.set('trust proxy', true);
 app.use(express.json());
 app.use(express.static('static'));
 
@@ -23,6 +22,18 @@ app.use(
 );
 
 app.use(cors({ origin: 'https://tailwind-project3.herokuapp.com', credentials: true }));
+app.enable('trust proxy'); // optional, not needed for secure cookies
+app.use(
+  express.session({
+    secret: 'somesecret',
+    key: 'sid',
+    proxy: true, // add this when behind a reverse proxy, if you need secure cookies
+    cookie: {
+      secure: true,
+      maxAge: 5184000000, // 2 months
+    },
+  }),
+);
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
