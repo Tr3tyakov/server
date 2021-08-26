@@ -29,7 +29,18 @@ app.use(
   }),
 );
 app.enable('trust proxy'); // optional, not needed for secure cookies
-
+app.use(
+  session({
+    secret: 'street',
+    resave: true,
+    saveUninitialized: true,
+    proxy: true,
+    cookie: {
+      sameSite: 'none',
+      secure: true,
+    },
+  }),
+);
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
