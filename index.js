@@ -22,7 +22,7 @@ app.use(
 );
 
 app.enable('trust proxy'); // optional, not needed for secure cookies
-app.enableCors(
+app.use(
   cors({
     origin: 'https://tailwindproject.vercel.app',
     credentials: true,
