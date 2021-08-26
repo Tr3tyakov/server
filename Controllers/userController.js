@@ -26,7 +26,7 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        domain: 'tailwindproject.vercel.app',
+        domain: 'vercel.app',
         sameSite: 'none',
         secure: true,
       });
@@ -53,7 +53,7 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        domain: 'tailwindproject.vercel.app',
+        domain: 'vercel.app',
         sameSite: 'none',
         secure: true,
       });
