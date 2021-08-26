@@ -37,7 +37,7 @@ app.use(
     cookie: {
       path: '/',
       secure: true,
-      domain: '.vercel.app',
+      // domain: '.vercel.app',
       httpOnly: true,
       maxAge: 30 * 24 * 60 * 1000,
     },
