@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.set('trust proxy', true);
 app.use(express.json());
 app.use(express.static('static'));
 
