@@ -26,9 +26,9 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        domain: 'vercel.app',
+        domain: '.vercel.app',
         sameSite: 'none',
-        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+        secure: true,
       });
       res.json(userData);
     } catch (e) {
@@ -53,9 +53,9 @@ class UserController {
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
         httpOnly: true,
-        domain: 'vercel.app',
+        domain: '.vercel.app',
         sameSite: 'none',
-        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+        secure: true,
       });
       res.json(userData);
     } catch (e) {
