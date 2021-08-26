@@ -14,28 +14,25 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.static('static'));
-app.use(
-  session({
-    name: 'random_session',
-    secret: 'random_secret',
-    resave: false,
-    saveUnitialized: true,
-    cookie: {
-      path: '/',
-      secure: true,
-      // domain: '.vercel.app',
-      httpOnly: true,
-      sameSite: 'none',
-      maxAge: 30 * 24 * 60 * 1000,
-    },
-  }),
-);
-
-app.use(
-  fileUpload({
-    createParentPath: true,
-  }),
-);
+app.use({
+  name: 'random_session',
+  secret: 'random_secret',
+  resave: false,
+  saveUnitialized: true,
+  cookie: {
+    path: '/',
+    secure: true,
+    // domain: '.vercel.app',
+    httpOnly: true,
+    sameSite: 'none',
+    maxAge: 30 * 24 * 60 * 1000,
+  },
+}),
+  app.use(
+    fileUpload({
+      createParentPath: true,
+    }),
+  );
 
 app.enable('trust proxy'); // optional, not needed for secure cookies
 app.use(
