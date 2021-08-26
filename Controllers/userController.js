@@ -28,6 +28,9 @@ class UserController {
         httpOnly: true,
         secure: true,
         sameSite: 'none',
+        resave: true,
+        saveUninitialized: true,
+        proxy: true,
       });
       res.json(userData);
     } catch (e) {
@@ -54,6 +57,9 @@ class UserController {
         httpOnly: true,
         secure: true,
         sameSite: 'none',
+        resave: true,
+        saveUninitialized: true,
+        proxy: true,
       });
       res.json(userData);
     } catch (e) {
