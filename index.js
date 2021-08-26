@@ -23,7 +23,7 @@ app.use(
 
 app.use(
   cors({
-    origin: 'https://tailwind-project3.herokuapp.com',
+    origin: 'https://tailwindproject.vercel.app',
     credentials: true,
     'Access-Control-Allow-Origin': '*',
   }),
