@@ -21,8 +21,8 @@ app.use(
   }),
 );
 
-app.use(cors({ origin: 'https://tailwind-project3.herokuapp.com', credentials: true }));
-app.enable('trust proxy'); // optional, not needed for secure cookies
+app.use(cors({ origin: 'https://tailwind-project3.herokuapp.com', credentials: 'include' }));
+app.set('trust proxy', 1); // optional, not needed for secure cookies
 
 app.use(cookieParser());
 app.use('/api', userRouter);
