@@ -10,38 +10,45 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 
 const app = express();
+const appURL = 'https://tailwindproject.vercel.app';
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.static('static'));
-app.use({
-  name: 'random_session',
-  secret: 'random_secret',
-  resave: false,
-  saveUnitialized: true,
-  cookie: {
-    path: '/',
-    secure: true,
-    // domain: '.vercel.app',
-    httpOnly: true,
-    sameSite: 'none',
-    maxAge: 30 * 24 * 60 * 1000,
-  },
-}),
-  app.use(
-    fileUpload({
-      createParentPath: true,
-    }),
-  );
 
-app.enable('trust proxy'); // optional, not needed for secure cookies
 app.use(
-  cors({
-    origin: '*',
-    credentials: true,
+  fileUpload({
+    createParentPath: true,
   }),
 );
-app.use(cookieParser('random_secret'));
+
+app.use(cors({ origin: appURL, credentials: true, methods: 'GET,POST,DELETE,PUT' }));
+app.use(cookieParser());
+
+app.all('*', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', appURL);
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+app.set('trust proxy', 1);
+
+app.use(
+  session({
+    name: 'random_session',
+    secret: 'yryGGeugidx34otGDuSF5sD9R8g0Gü3r8',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      path: '/',
+      secure: true,
+      domain: '.vercel.app',
+      httpOnly: true,
+    },
+  }),
+);
+
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
 app.use('/api', vacancyRouter);
