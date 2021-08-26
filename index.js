@@ -29,14 +29,7 @@ app.use(
   }),
 );
 app.enable('trust proxy'); // optional, not needed for secure cookies
-app.use(
-  express.session({
-    cookie: {
-      secure: true,
-      maxAge: 5184000000, // 2 months
-    },
-  }),
-);
+
 app.use(cookieParser());
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
