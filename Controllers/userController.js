@@ -25,6 +25,7 @@ class UserController {
 
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
+        sameSite: 'lax',
 
         httpOnly: true,
       });
@@ -50,6 +51,8 @@ class UserController {
       const userData = await UserService.refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 1000,
+        sameSite: 'lax',
+
         httpOnly: true,
       });
       res.json(userData);
