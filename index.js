@@ -11,8 +11,10 @@ const fileUpload = require('express-fileupload');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
 const appURL = 'https://tailwindproject.vercel.app';
-app.use(cors({ origin: appURL, credentials: true }));
+// app.use(cors({ origin: 'appURL', credentials: true }));
 app.enable('trust proxy');
 env = process.env.NODE_ENV || 'development';
 
