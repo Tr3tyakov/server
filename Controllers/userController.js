@@ -27,6 +27,8 @@ class UserController {
         maxAge: 30 * 24 * 60 * 1000,
         path: '/',
         // domain: 'vercel.app',
+        sameSite: 'none',
+
         httpOnly: true,
       });
       res.json(userData);
@@ -53,7 +55,7 @@ class UserController {
         maxAge: 30 * 24 * 60 * 1000,
         path: '/',
         // domain: 'vercel.app',
-
+        sameSite: 'none',
         httpOnly: true,
       });
       res.json(userData);
