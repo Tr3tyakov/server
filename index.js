@@ -12,6 +12,7 @@ const app = express();
 const appURL = 'https://tailwindproject.vercel.app';
 env = process.env.NODE_ENV || 'development';
 
+app.use(cors({ origin: appURL, credentials: true }));
 var forceSsl = function (req, res, next) {
   if (req.headers['x-forwarded-proto'] !== 'https') {
     return res.redirect(['https://', req.get(appURL), req.url].join(''));
@@ -25,7 +26,6 @@ app.configure(function () {
   }
 
   const PORT = process.env.PORT || 5000;
-  app.use(cors({ origin: appURL, credentials: true }));
   // app.set('trust proxy', 1);
 
   app.use(express.json());
