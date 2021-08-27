@@ -8,11 +8,15 @@ const resumeRouter = require('./Routers/resumeRouter');
 const ErrorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
-
 const app = express();
-app.set('trust proxy', 1);
-const appURL = 'https://tailwindproject.vercel.app';
+
 const PORT = process.env.PORT || 5000;
+const appURL = 'https://tailwindproject.vercel.app';
+app.app.set('trust proxy', 1);
+app.get('*', function (req, res, next) {
+  if (req.headers['x-forwarded-proto'] != 'https') res.redirect(appURL + req.url);
+  else next(); /* Continue to other routes if we're not redirecting */
+});
 
 app.use(express.json());
 app.use(express.static('static'));
@@ -23,15 +27,8 @@ app.use(
   }),
 );
 
-app.use(cors({ origin: appURL, credentials: true, methods: 'GET,POST,DELETE,PUT' }));
+app.use(cors({ origin: appURL, credentials: true }));
 app.use(cookieParser());
-
-app.all('*', function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', appURL);
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
 
 app.use('/api', userRouter);
 app.use('/api', resumeRouter);
