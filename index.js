@@ -12,7 +12,8 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 const appURL = 'https://tailwindproject.vercel.app';
-app.app.set('trust proxy', 1);
+app.use(cors({ origin: appURL, credentials: true }));
+app.set('trust proxy', 1);
 app.get('*', function (req, res, next) {
   if (req.headers['x-forwarded-proto'] != 'https') res.redirect(appURL + req.url);
   else next(); /* Continue to other routes if we're not redirecting */
@@ -27,7 +28,6 @@ app.use(
   }),
 );
 
-app.use(cors({ origin: appURL, credentials: true }));
 app.use(cookieParser());
 
 app.use('/api', userRouter);
