@@ -22,7 +22,7 @@ app.use(
     createParentPath: true,
   }),
 );
-app.use(cors({ origin: appURL, credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(sslRedirect());
 app.use(cookieParser());
 
