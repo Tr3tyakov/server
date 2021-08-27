@@ -10,8 +10,9 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
 const appURL = 'https://tailwindproject.vercel.app';
-env = process.env.NODE_ENV || 'development';
+const PORT = process.env.PORT || 5000;
 
+app.use(cors({ origin: appURL, credentials: true }));
 var forceSsl = function (req, res, next) {
   if (req.headers['x-forwarded-proto'] !== 'https') {
     return res.redirect(['https://', req.get(appURL), req.url].join(''));
@@ -19,12 +20,9 @@ var forceSsl = function (req, res, next) {
   return next();
 };
 
-app.set('trust proxy', 1);
-app.use(cors({ origin: appURL, credentials: true }));
+// app.set('trust proxy', 1);
 app.configure(function () {
   app.use(forceSsl);
-
-  const PORT = process.env.PORT || 5000;
 
   app.use(express.json());
   app.use(express.static('static'));
@@ -41,18 +39,18 @@ app.configure(function () {
   app.use('/api', resumeRouter);
   app.use('/api', vacancyRouter);
   app.use(ErrorHandler);
-  const start = async () => {
-    try {
-      await mongoose.connect(process.env.DB_URL, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-        useCreateIndex: true,
-      });
-      app.listen(PORT, () => console.log(`SERVER HAS BEEN STARTED ${PORT}`));
-    } catch (e) {
-      console.log(e, e.message, 'SERVER');
-    }
-  };
-
-  start();
 });
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.DB_URL, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    });
+    app.listen(PORT, () => console.log(`SERVER HAS BEEN STARTED ${PORT}`));
+  } catch (e) {
+    console.log(e, e.message, 'SERVER');
+  }
+};
+
+start();
