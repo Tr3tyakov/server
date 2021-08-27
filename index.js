@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const appURL = 'https://tailwindproject.vercel.app';
 
-app.use(cors({ origin: appURL, credentials: true }));
+app.use(cors({ origin: '*', credentials: true }));
 app.use(express.json());
 app.use(express.static('static'));
 
