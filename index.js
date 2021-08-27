@@ -23,7 +23,7 @@ app.use(
   }),
 );
 app.use(cors({ origin: appURL, credentials: true }));
-// app.use(sslRedirect());
+app.use(sslRedirect());
 app.use(cookieParser());
 
 app.use('/api', userRouter);
