@@ -9,15 +9,15 @@ const ErrorHandler = require('./middleware/errorHandler');
 const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
+app.get('*', function (req, res, next) {
+  if (req.headers['x-forwarded-proto'] != 'https') res.redirect(appURL + req.url);
+  else next(); /* Continue to other routes if we're not redirecting */
+});
 
 const PORT = process.env.PORT || 5000;
 const appURL = 'https://tailwindproject.vercel.app';
 app.use(cors({ origin: appURL, credentials: true }));
 app.set('trust proxy', 1);
-app.get('*', function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] != 'https') res.redirect(appURL + req.url);
-  else next(); /* Continue to other routes if we're not redirecting */
-});
 
 app.use(express.json());
 app.use(express.static('static'));
